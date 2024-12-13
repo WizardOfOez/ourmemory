@@ -22,9 +22,8 @@ body {
 }
 
 .image-container img {
-  width: 100%;
-  height: 150px; /* Fixierte Höhe für eine gleichmäßige Darstellung */
-  object-fit: cover; /* Passt das Bild an, ohne es zu verzerren */
+  width: 100%; /* Bilder in der Galerie passen sich an den Container an */
+  height: auto; /* Originalproportionen bleiben erhalten */
   display: block;
 }
 
@@ -50,21 +49,22 @@ body {
   border-radius: 10px;
   text-align: center;
   position: relative;
-  max-width: 90%; /* Passt das Modal an den Bildschirm an */
-  max-height: 90%; /* Verhindert, dass das Modal zu groß wird */
-  overflow-y: auto; /* Ermöglicht Scrollen, falls nötig */
+  max-width: 80%; /* Modal nimmt maximal 80% der Breite ein */
+  max-height: 80%; /* Modal nimmt maximal 80% der Höhe ein */
+  overflow-y: auto; /* Ermöglicht Scrollen, falls der Inhalt zu groß ist */
 }
 
 .modal-content img {
-  max-width: 100%; /* Verhindert, dass das Bild die Modal-Breite überschreitet */
-  max-height: 70%; /* Bild darf nicht mehr als 70% der Modal-Höhe einnehmen */
-  border-radius: 5px;
+  max-width: 100%; /* Das Bild passt sich an die Breite des Modals an */
+  max-height: 60%; /* Das Bild nimmt maximal 60% der Modal-Höhe ein */
+  margin-bottom: 10px; /* Abstand zwischen Bild und Text */
+  border-radius: 5px; /* Abgerundete Ecken */
 }
 
 .modal-content p {
-  margin-top: 15px;
   font-style: italic; /* Text in Kursivschrift */
   font-size: 16px; /* Angemessene Schriftgröße */
+  color: #555; /* Dezente Textfarbe */
 }
 
 #close {
