@@ -22,8 +22,8 @@ body {
 }
 
 .image-container img {
-  width: 100%; /* Bilder in der Galerie passen sich an den Container an */
-  height: auto; /* Originalproportionen bleiben erhalten */
+  width: 100%; /* Füllt den Container */
+  height: auto; /* Beibehaltung der Proportionen */
   display: block;
 }
 
@@ -49,16 +49,17 @@ body {
   border-radius: 10px;
   text-align: center;
   position: relative;
-  max-width: 80%; /* Modal nimmt maximal 80% der Breite ein */
-  max-height: 80%; /* Modal nimmt maximal 80% der Höhe ein */
-  overflow-y: auto; /* Ermöglicht Scrollen, falls der Inhalt zu groß ist */
+  max-width: 80%; /* Maximale Breite des Modals */
+  max-height: 80%; /* Maximale Höhe des Modals */
+  overflow: hidden; /* Kein Inhalt außerhalb des Modals sichtbar */
 }
 
 .modal-content img {
-  max-width: 100%; /* Das Bild passt sich an die Breite des Modals an */
-  max-height: 60%; /* Das Bild nimmt maximal 60% der Modal-Höhe ein */
-  margin-bottom: 10px; /* Abstand zwischen Bild und Text */
-  border-radius: 5px; /* Abgerundete Ecken */
+  width: auto; /* Passt die Breite automatisch an */
+  max-width: 100%; /* Überschreitet nicht die Modal-Breite */
+  max-height: 60vh; /* Überschreitet nicht 60% der Fensterhöhe */
+  margin-bottom: 10px; /* Abstand zum Text */
+  border-radius: 5px;
 }
 
 .modal-content p {
