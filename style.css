@@ -1,4 +1,3 @@
-/* style.css */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -7,8 +6,8 @@ body {
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Dynamische Verteilung */
+  gap: 20px;
   padding: 20px;
 }
 
@@ -18,20 +17,29 @@ body {
   overflow: hidden;
   border: 2px solid #ddd;
   border-radius: 10px;
-  transition: transform 0.3s;
-  background-color: white; /* Fallback-Hintergrund, falls das Bild nicht geladen wird */
-  height: 150px; /* Einheitliche Höhe */
+  transition: transform 0.3s, box-shadow 0.3s;
+  height: 150px; /* Höhe des "Briefs" */
+  background-color: #fff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .image-container img {
-  width: 100%; /* Passt die Breite an den Container an */
-  height: 100%; /* Passt die Höhe an den Container an */
-  object-fit: cover; /* Zuschneiden des Bildes ohne Verzerrung */
-  display: block;
+  position: absolute;
+  top: -20%;
+  left: 0;
+  width: 100%;
+  height: auto;
+  transform: scale(1.2); /* Zoom für das Brief-Design */
+  transition: transform 0.3s, opacity 0.3s;
 }
 
 .image-container:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.image-container:hover img {
+  transform: scale(1.1); /* Leichtes Zoomen beim Hover */
 }
 
 .modal {
@@ -52,23 +60,14 @@ body {
   border-radius: 10px;
   text-align: center;
   position: relative;
-  max-width: 80%; /* Maximale Breite des Modals */
-  max-height: 80%; /* Maximale Höhe des Modals */
-  overflow: hidden; /* Kein Inhalt außerhalb des Modals sichtbar */
+  max-width: 90%;
+  max-height: 90%;
 }
 
 .modal-content img {
-  width: auto; /* Passt die Breite automatisch an */
-  max-width: 100%; /* Überschreitet nicht die Modal-Breite */
-  max-height: 60vh; /* Überschreitet nicht 60% der Fensterhöhe */
-  margin-bottom: 10px; /* Abstand zum Text */
+  max-width: 80%; /* Beschränkung der Bildgröße im Modal */
+  max-height: 70%; /* Damit der Text darunter Platz hat */
   border-radius: 5px;
-}
-
-.modal-content p {
-  font-style: italic; /* Text in Kursivschrift */
-  font-size: 16px; /* Angemessene Schriftgröße */
-  color: #555; /* Dezente Textfarbe */
 }
 
 #close {
@@ -81,5 +80,11 @@ body {
 }
 
 #close:hover {
-  color: black;
+  color: red;
+}
+
+#modal-text {
+  margin-top: 15px;
+  font-size: 18px;
+  font-style: italic;
 }
