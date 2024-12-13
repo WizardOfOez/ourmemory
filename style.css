@@ -1,96 +1,81 @@
 /* style.css */
 body {
-    font-family: 'Georgia', serif;
-    margin: 0;
-    background-color: #fbeaea; /* Sanftes Rosa */
-  }
-  
-  .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 30px;
-  }
-  
-  .image-container {
-    position: relative;
-    cursor: pointer;
-    overflow: hidden;
-    border: 2px solid #d4a5a5; /* Zartrosa Rahmen */
-    border-radius: 15px;
-    background: linear-gradient(135deg, #fbeaea, #ffffff);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  
-  .image-container img {
-    width: 100%;
-    height: auto;
-    display: block;
-    clip-path: polygon(0 0, 100% 0, 100% 80%, 0% 60%);
-  }
-  
-  .image-container:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-  }
-  
-  .modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    justify-content: center;
-    align-items: center;
-    animation: fadeIn 0.4s;
-  }
-  
-  .modal-content {
-    background: #fff;
-    padding: 25px;
-    border-radius: 15px;
-    text-align: center;
-    max-width: 600px;
-    width: 90%;
-  }
-  
-  .modal-content img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    margin-bottom: 15px;
-  }
-  
-  #modal-text {
-    font-family: 'Cursive', serif;
-    font-size: 18px;
-    color: #555;
-  }
-  
-  #close {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 24px;
-    color: #333;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  
-  #close:hover {
-    color: #d63447;
-  }
-  
-  /* Fade-in Effekt für Modal */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: #f4f4f4;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+
+.image-container {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+
+.image-container img {
+  width: 100%;
+  height: 150px; /* Fixierte Höhe für eine gleichmäßige Darstellung */
+  object-fit: cover; /* Passt das Bild an, ohne es zu verzerren */
+  display: block;
+}
+
+.image-container:hover {
+  transform: scale(1.05);
+}
+
+.modal {
+  display: none; /* Unsichtbar, bis es geöffnet wird */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  position: relative;
+  max-width: 90%; /* Passt das Modal an den Bildschirm an */
+  max-height: 90%; /* Verhindert, dass das Modal zu groß wird */
+  overflow-y: auto; /* Ermöglicht Scrollen, falls nötig */
+}
+
+.modal-content img {
+  max-width: 100%; /* Verhindert, dass das Bild die Modal-Breite überschreitet */
+  max-height: 70%; /* Bild darf nicht mehr als 70% der Modal-Höhe einnehmen */
+  border-radius: 5px;
+}
+
+.modal-content p {
+  margin-top: 15px;
+  font-style: italic; /* Text in Kursivschrift */
+  font-size: 16px; /* Angemessene Schriftgröße */
+}
+
+#close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  color: black;
+  cursor: pointer;
+}
+
+#close:hover {
+  color: red;
+}
