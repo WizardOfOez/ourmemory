@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
   
         // Zeige das Modal mit Animation
         modal.style.display = "flex";
-        modal.classList.add("fade-in");
       });
     });
   
