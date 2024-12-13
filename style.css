@@ -8,6 +8,35 @@ body {
   transform: scale(0.8);
 }
 
+.visited-checkbox {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  transform: scale(1.5);
+  cursor: pointer;
+}
+
+.progress-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f8f9fa; /* Heller Hintergrund */
+  padding: 10px 20px;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Schatten für sichtbare Abtrennung */
+  z-index: 1000; /* Sicherstellen, dass es über anderen Elementen liegt */
+  text-align: center;
+}
+
+.progress-bar {
+  background-color: #28a745; /* Grün für den Fortschritt */
+  height: 20px;
+}
+
+#next-page-btn {
+  margin-top: 10px;
+}
+
 
 .gallery {
   display: grid;

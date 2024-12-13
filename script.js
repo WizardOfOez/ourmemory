@@ -3,54 +3,73 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalImage = document.getElementById("modal-image");
   const modalText = document.getElementById("modal-text");
   const closeModal = document.getElementById("close");
-  let audio = null; // Audio-Element zum Abspielen von Musik
-
-  // Füge Event-Listener zu allen Containern hinzu
   const containers = document.querySelectorAll(".image-container");
+  const progressBar = document.querySelector(".progress-bar");
+  const nextPageBtn = document.getElementById("next-page-btn");
+  let audio = null;
+
+  const totalContainers = containers.length;
+  let visitedCount = 0;
+
   containers.forEach((container) => {
       container.addEventListener("click", () => {
-          // Hole Bild, Text und Audio-Quelle aus dem Container
           const imgSrc = container.querySelector("img").src;
           const text = container.getAttribute("data-text");
           const audioSrc = container.getAttribute("data-audio");
 
-          // Setze die Inhalte in das Modal
           modalImage.src = imgSrc;
           modalText.textContent = text;
 
-          // Erstelle und spiele das Audio ab
           if (audio) {
               audio.pause();
               audio = null;
           }
           if (audioSrc) {
               audio = new Audio(audioSrc);
-              audio.loop = true; // Audio im Loop abspielen
+              audio.loop = true;
               audio.play();
           }
 
-          // Zeige das Modal mit Animation
           modal.style.display = "flex";
+
+          closeModal.onclick = () => {
+              closeModalAndUpdateProgress(container);
+          };
+
+          window.onclick = (e) => {
+              if (e.target === modal) {
+                  closeModalAndUpdateProgress(container);
+              }
+          };
       });
   });
 
-  // Schließen des Modals
-  closeModal.addEventListener("click", () => {
+  function closeModalAndUpdateProgress(container) {
       modal.style.display = "none";
       if (audio) {
-          audio.pause(); // Stoppe das Audio
-          audio = null;  // Audio-Element entfernen
+          audio.pause();
+          audio = null;
       }
-  });
 
-  // Modal schließen, wenn man außerhalb klickt
-  window.addEventListener("click", (e) => {
-      if (e.target === modal) {
-          modal.style.display = "none";
-          if (audio) {
-              audio.pause(); // Stoppe das Audio
-              audio = null;  // Audio-Element entfernen
-          }
+      const checkbox = container.querySelector(".visited-checkbox");
+      if (checkbox && !checkbox.checked) {
+          checkbox.checked = true;
+          visitedCount++;
+          updateProgressBar();
       }
+  }
+
+  function updateProgressBar() {
+      const progress = (visitedCount / totalContainers) * 100;
+      progressBar.style.width = `${progress}%`;
+      progressBar.setAttribute("aria-valuenow", progress);
+
+      if (visitedCount === totalContainers) {
+          nextPageBtn.style.display = "inline-block";
+      }
+  }
+
+  nextPageBtn.addEventListener("click", () => {
+      window.location.href = "nextpage.html";
   });
 });

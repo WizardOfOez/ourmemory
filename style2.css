@@ -1,0 +1,47 @@
+
+
+/* Bild im Herzrahmen */
+.heart-container img {
+    width: 250px; /* angepasst an Bildgröße */
+    aspect-ratio: 1;
+    object-fit: cover;
+    --_m: radial-gradient(#000 69%,#0000 70%) 84.5%/50%;
+    -webkit-mask-box-image: var(--_m);
+             mask-border: var(--_m);
+    clip-path: polygon(-41% 0,50% 91%, 141% 0);
+}
+
+/* fallback bis besserer Support für mask-border */
+@supports not (-webkit-mask-box-image: var(--_m)) { 
+  .heart-container img {
+   --_m:
+     radial-gradient(at 70% 31%,#000 29%,#0000 30%),
+     radial-gradient(at 30% 31%,#000 29%,#0000 30%),
+     linear-gradient(#000 0 0) bottom/100% 50% no-repeat;
+   -webkit-mask: var(--_m);
+           mask: var(--_m);
+  }
+}
+
+/* Romantischer Text unter dem Herz */
+.romantic-text {
+    margin-top: 20px;
+    font-family: 'Cursive', sans-serif; /* Stilvolle Schriftart */
+    font-size: 24px;
+    text-align: center;
+    color: #d63447; /* Warmer Rotton */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Leichter Schlagschatten */
+}
+
+/* Body Styles */
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    background-color: #fdeaea; /* Warme Hintergrundfarbe */
+    filter: drop-shadow(0 0 10px #ff3e60);
+}
