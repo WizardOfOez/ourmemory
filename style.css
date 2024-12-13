@@ -1,49 +1,58 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Georgia', serif;
   margin: 0;
-  background-color: #f4f4f4;
+  background-color: #fbeaea; /* Sanftes Rosa */
 }
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Dynamische Verteilung */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
-  padding: 20px;
+  padding: 30px;
 }
 
 .image-container {
   position: relative;
   cursor: pointer;
-  overflow: hidden;
-  border: 2px solid #ddd;
-  border-radius: 10px;
+  border: 2px solid #d4a5a5; /* Zartrosa Rahmen */
+  border-radius: 15px;
+  background: linear-gradient(135deg, #fbeaea, #ffffff);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s, box-shadow 0.3s;
-  height: 350px; /* Höhe des "Briefs" */
-  background-color: #fff;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Verhindert Überlappen bei Hover */
+  aspect-ratio: 1 / 1; /* Quadratisches Format */
 }
 
 .image-container img {
-  position: absolute;
-  top: -20%;
-  left: 0;
   width: 100%;
-  height: auto;
-  transform: scale(1.2); /* Zoom für das Brief-Design */
-  transition: transform 0.3s, opacity 0.3s;
-}
-
-.image-container:hover {
-  transform: scale(1.03);
-  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+  height: 100%;
+  object-fit: cover; /* Bild anpassen */
+  clip-path: polygon(50% 0, 0 50%, 50% 100%, 100% 50%); /* Verbergen der Ränder */
+  transition: clip-path 0.3s;
 }
 
 .image-container:hover img {
-  transform: scale(1.1); /* Leichtes Zoomen beim Hover */
+  clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0); /* Sichtbares Bild im Hover Zustand */
+}
+
+.image-container:hover::before {
+  content: '\2665'; /* Unicode Zeichen für Herz */
+  font-size: 2rem; /* Größe des Herzsymbols */
+  color: #d63447; /* Farbe des Herzsymbols */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.image-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 .modal {
-  display: none; /* Unsichtbar, bis es geöffnet wird */
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -52,39 +61,52 @@ body {
   background-color: rgba(0, 0, 0, 0.8);
   justify-content: center;
   align-items: center;
+  animation: fadeIn 0.4s;
 }
 
 .modal-content {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
+  background: #fff;
+  padding: 25px;
+  border-radius: 15px;
   text-align: center;
-  position: relative;
-  max-width: 90%;
-  max-height: 90%;
+  max-width: 600px;
+  width: 90%;
 }
 
 .modal-content img {
-  max-width: 80%; /* Beschränkung der Bildgröße im Modal */
-  max-height: 70%; /* Damit der Text darunter Platz hat */
-  border-radius: 5px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+#modal-text {
+  font-family: 'Cursive', serif;
+  font-size: 18px;
+  color: #555;
+  margin-top: 15px; /* Sicherstellen, dass Text unterhalb des Bildes bleibt */
 }
 
 #close {
   position: absolute;
   top: 10px;
-  right: 10px;
+  right: 15px;
   font-size: 24px;
-  color: black;
+  color: #333;
   cursor: pointer;
+  font-weight: bold;
 }
 
 #close:hover {
-  color: red;
+  color: #d63447;
 }
 
-#modal-text {
-  margin-top: 15px;
-  font-size: 18px;
-  font-style: italic;
+/* Fade-in Effekt für Modal */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
