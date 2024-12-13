@@ -18,7 +18,7 @@ body {
   border: 2px solid #ddd;
   border-radius: 10px;
   transition: transform 0.3s, box-shadow 0.3s;
-  height: 150px; /* Höhe des "Briefs" */
+  height: 350px; /* Höhe des "Briefs" */
   background-color: #fff;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
